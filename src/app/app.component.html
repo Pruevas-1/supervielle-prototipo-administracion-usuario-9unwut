@@ -1,0 +1,246 @@
+<app-header></app-header>
+<div class=marco-general>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <div class="caja">
+          <div class="titulo">
+            <h1>Administracion de Usuarios</h1>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="d-table-cell">Nombre</th>
+                <th class="d-none d-md-table-cell">Cuil</th>
+                <th class="d-none d-xs-table-cell">Usuario</th>
+                <th class="d-none d-md-table-cell">Tipo De Usuario</th>
+                <th class="d-none d-xs-table-cell">Estado</th>
+                <th class="d-none d-lg-table-cell">Celular</th>
+                <th class="d-none d-lg-table-cell">Clave SMS (CDA)</th>
+                <th class="d-none d-lg-table-cell">Mail</th>
+                <th class="d-none">Fec. Creación</th>
+                <th class="d-none">Fec. Último acceso</th>
+                <th class="d-none">Fec. Último cambio Contraseña</th>
+                <th class=""></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of usuarios" [ngClass]="{'fila-usuario-desactivado' : user.estado != 'Activo'}">
+                <td (click)="cambiarModoModal(user,'detalles')">{{user.nombre}}</td>
+                <td (click)="cambiarModoModal(user,'detalles')" class="d-none d-md-table-cell">{{user.cuil}}
+                </td>
+                <td (click)="cambiarModoModal(user,'detalles')" class="d-none d-xs-table-cell">{{user.usuario}}
+                </td>
+                <td (click)="cambiarModoModal(user,'detalles')" class="d-none d-md-table-cell">
+                  {{user.tipo_de_usuario}}</td>
+                <td class="d-none d-xs-table-cell">{{user.estado}}</td>
+                <td class="d-none d-lg-table-cell">{{user.celular}}</td>
+                <td class="d-none d-lg-table-cell">{{user.clave_sms}}</td>
+                <td class="d-none d-lg-table-cell">{{user.mail}}</td>
+                <td class="d-none">{{user.fec_creacion}}</td>
+                <td class="d-none">{{user.fec_ultimo_acceso}}</td>
+                <td class="d-none">{{user.fec_ultimo_cambio_contrasena}}</td>
+                <td>
+                  <!-- Default dropright button -->
+                  <div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="elipsis-contenedor text-md-center text-dark">
+                    <i class="fas fa-ellipsis-v" ></i>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" (click)="cambiarModoModal(user,'detalles')">Mas Info</a>
+                      <a class="dropdown-item" href="#">
+                        {{user.estado=="Activo"?'Inhabilitar':'Habilitar'}}
+                      </a>
+                      <a class="dropdown-item" href="#">Claves</a>
+                    </div>
+                  </div>
+                  <!-- ------ -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col-auto mr-auto"></div>
+            <div class="col-auto">
+              <button type="button" class="btn btn-obe btn-rojo">Agregar Usuarios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="userDataModal" tabindex="-1" role="dialog" aria-labelledby="userDataModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-supervielle" style="max-width:700px" role="document">
+    <div class="modal-content modal-supervielle-content ">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase" id="exampleModalLabel">{{selectedUser.nombre}}</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <form>
+          <div class="container">
+            <div class="detalles-contenedor">
+              <div class="align-content-center d-flex justify-content-between" data-toggle="collapse"
+                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <h6 class=" text-uppercase">Información del usuario</h6>
+                <i *ngIf="!seEstaViendoElCollapsable()" class="fas fa-chevron-down"></i>
+                <i *ngIf="seEstaViendoElCollapsable()" class="fas fa-chevron-up"></i>
+                <!--div data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  class=" elipsis-contenedor text-md-center text-dark">
+                  <i class="fas fa-ellipsis-v" ></i>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" (click)="cambiarModoModal(selectedUser,'editar')">Editar</a>
+                    <a class="dropdown-item" href="#">
+                      {{selectedUser.estado=="activo"?'Inhabilitar':'Habilitar'}}
+                    </a>
+                    <a class="dropdown-item" href="#">Claves</a>
+                  </div>
+                </div-->
+              </div>
+              <hr>
+              <div class="row collapse detalles-contenedor-body" id="collapseExample">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">CUIL</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.cuil}}</p>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Clave SMS (CDA)</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.clave_sms}}</p>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Usuario</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.usuario}}</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Estado</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.estado}}</p>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Tipo de usuario</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.tipo_de_usuario}}</p>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Fec. Creación</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.fec_creacion}}</p>
+                  </div>
+                </div>
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Fec. Último acceso</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.fec_ultimo_acceso}}</p>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Fec. Último cambio Contraseña</label>
+                    <p id="emailHelp" class="form-text text-muted">{{selectedUser.fec_ultimo_cambio_contrasena}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="detalles-contenedor">
+              <div class="align-content-center d-flex justify-content-between text-uppercase">
+                <h6>Información Personal</h6>
+                <i class="fas fa-pencil-alt" (click)="cambiarModoModal(selectedUser,'editar')"></i>
+              </div>
+              <hr>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Celular</label>
+                    <p id="celular" class="form-text text-muted">{{selectedUser.celular}}</p>
+                  </div>
+                </div>
+
+
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Teléfono Laboral </label>
+                    <p *ngIf="modoModal!='editar'" id="telefono_laboral_label" class="form-text text-muted">
+                      {{selectedUser.telefono_laboral}}</p>
+                    <input *ngIf="modoModal=='editar'" [(ngModel)]="formEditar.telefono_laboral" name="telefono_laboral"  type="text" class="form-control" id="telefono_laboral" aria-describedby="telefono_laboral_input" placeholder="{{selectedUser.telefono_laboral ? selectedUser.telefono_laboral : 'Ingrese teléfono celular'}}">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="Cuil">Sector/Departamento</label>
+                    <p *ngIf="modoModal!='editar'" id="sector" class="form-text text-muted">{{selectedUser.sector}}</p>
+                    <input *ngIf="modoModal=='editar'" [(ngModel)]="formEditar.sector" name="sector" type="text" class="form-control" id="sector_input" aria-describedby="sector" placeholder="{{selectedUser.sector ? selectedUser.sector : 'Ingrese Sector/Departamento'}}">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label  for="Cuil">Cargo </label>
+                    <p *ngIf="modoModal!='editar'" id="cargo" class="form-text text-muted">{{selectedUser.cargo}}</p>
+                    <input *ngIf="modoModal=='editar'" [(ngModel)]="formEditar.cargo" name="cargo" type="text" class="form-control" id="cargo_input" aria-describedby="cargo" placeholder="{{selectedUser.cargo ? selectedUser.cargo : 'Ingrese cargo'}}">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="Cuil">Mail </label>
+                    <p *ngIf="modoModal!='editar'" id="mail" class="form-text text-muted">{{selectedUser.mail}}</p>
+                    <input required *ngIf="modoModal=='editar'" [(ngModel)]="formEditar.mail"  name="mail" type="email" class="form-control" [value]="" id="mail_input" aria-describedby="mail" placeholder="{{selectedUser.mail ? selectedUser.mail : 'Ingrese Mail'}}">
+                  </div>
+                </div>
+                <div class="col-md-12" *ngIf="modoModal=='editar'">
+                  <div class="form-group">
+                    <label for="Cuil">Confirmar mail </label>
+                    <p *ngIf="modoModal!='editar'" id="mail_confirmation" class="form-text text-muted">
+                      {{selectedUser.mail_confirmation}}</p>
+                    <input *ngIf="modoModal=='editar'"  [(ngModel)]="formEditar.mail_confirmacion"  name="mail_confirmacion" type="email" class="form-control" id="mail_confirmation _input" aria-describedby="mail_confirmation " placeholder="{{selectedUser.mail_confirmation  ? selectedUser.mail_confirmation  : 'Ingrese mail'}}">
+                    <small *ngIf="formEditar.mail!=formEditar.mail_confirmacion" id="emailHelp" class="form-text text-danger">Los mails ingresados no coinciden</small>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-obe btn-rojo" *ngIf="modoModal=='editar'" [disabled]="formEditarTieneErrores()" >Guardar Cambios</button>
+        <button type="button" class="btn btn-obe btn-gris" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>

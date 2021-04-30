@@ -1,0 +1,149 @@
+body {
+  background: -moz-linear-gradient(
+    top,
+    #d5d2c9 0,
+    #d5d2c9 14%,
+    #f1f0ee 28%,
+    #f1f0ee 100%
+  );
+  background: -webkit-linear-gradient(
+    top,
+    #d5d2c9 0,
+    #d5d2c9 14%,
+    #f1f0ee 28%,
+    #f1f0ee 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    #d5d2c9 0,
+    #d5d2c9 14%,
+    #f1f0ee 28%,
+    #f1f0ee 100%
+  );
+}
+
+body {
+  text-align: left;
+  font-family: Heebo, sans-serif;
+  color: #3e3e40;
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  background: #f9f8f7;
+  border-top: 1px solid #d5d2ca;
+  border-bottom: 1px solid #d5d2ca;
+  height: 37px;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  color: #3e3e40;
+}
+
+table td {
+  font-size: 15px;
+  color: #3e3e40;
+  height: 44px;
+}
+
+.header-supervielle {
+  background: #fff;
+  height: 98px;
+}
+
+.lista-columna-princilal {
+  margin: auto;
+}
+
+.navbar {
+  background: linear-gradient(to bottom, #d52b1e 0, #882345 100%);
+}
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: white !important;
+}
+
+.caja {
+  background: #fff;
+  box-shadow: 0 0 20px rgb(0 0 0 / 8%);
+  padding: 9px 27px;
+  margin-bottom: 40px;
+}
+
+.marco-general {
+  padding-top: 40px;
+  padding-bottom: 4em;
+}
+
+.caja .titulo h1 {
+  font-size: 23px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: #3e3e40;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.btn.btn-obe.btn-rojo {
+  background-color: #d52b1e;
+  color: #fff;
+}
+.btn.btn-obe {
+  font-family: Heebo, sans-serif;
+  transition: border-bottom-color 0.4s;
+  border-radius: 6px;
+}
+.btn-obe {
+  border: 0;
+  padding: 8px 30px;
+  font-size: 14px;
+}
+
+.fila-usuario-desactivado > td {
+  color: #868686 !important;
+}
+.fila-usuario-desactivado {
+  background: #e6e6e6;
+}
+
+.detalles-contenedor {
+  box-shadow: 0px 2px 4px 0px #00000026;
+  padding: 10px 15px 0 15px;
+  margin-bottom: 20px;
+}
+
+.detalles-contenedor-body {
+  padding: 10px 0;
+}
+.btn-gris {
+  background-color: #626264;
+  color: #fff;
+}
+
+.modal-supervielle {
+  box-shadow: 20px 20px 20px #3e3e40;
+  border: 0px;
+  border-radius: 0;
+}
+
+.modal-supervielle-content {
+  border: 0px;
+  border-radius: 0;
+}
+
+.elipsis-contenedor {
+  width: 15px;
+}
+
+hr {
+  padding: 0;
+}

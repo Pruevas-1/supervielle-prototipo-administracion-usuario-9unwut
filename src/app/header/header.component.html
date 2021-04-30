@@ -1,0 +1,56 @@
+<div id="ember523" class="ember-view">
+  <div class="container-fluid hidden-print">
+    <header class="row header-supervielle">
+      <div class="col col-xs-6 text-left">
+
+        <!--Logo para pantalla principal-->
+        <a href="https://www.supervielle.com.ar/Empresas" target="_blank" class="navbar-brand">
+          <img src="https://s21.q4cdn.com/714080446/files/images/banco_supervielle.png" width="220" height="100">
+        </a>
+      </div>
+
+      <div class="col col-xs-6 text-right"  style="display: flex;
+    align-items: center;
+    justify-content: space-between;">
+        <!--Iconos a mostrar en menu principal-->
+        <div class="row iconos">
+          <div class="col col-xs-12" >
+            <a id="contactenos" href="mailto:atencionaempresas@supervielle.com.ar" data-toggle="tooltip"
+              title="Contáctenos" class="navbar-mail"></a>
+            <a id="ayuda" href="/obe/assets/Ayuda/index.html" target="_blank" data-toggle="tooltip" title="Ayuda"
+              class="navbar-pregunta"></a>
+            <a title="iFactus" href="/obe/ifactus" id="ifactus" class="navbar-ifactus ember-view">
+              <!---->
+            </a>
+            <a id="link_logout" data-toggle="tooltip" title="Salir" href="#" class="navbar-salir" data-ember-action=""
+              data-ember-action-537="537"></a>
+
+            <div id="ember544" class="custom-modal modal-logout ember-view">
+              <!---->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-xs-12" >
+            <b id="nombre-apellido" class="nombre-apellido">Juan Gelay</b>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</div>
+
+
+<div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarToggle" [class.show]="isCollapsed">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0 lista-columna-princilal">
+        <li class="nav-item" *ngFor="let category of columnas">
+          <a class="nav-link" style="color:white" href="#">{{category}}</a>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+</div>
